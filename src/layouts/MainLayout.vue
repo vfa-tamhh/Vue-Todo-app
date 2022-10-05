@@ -12,7 +12,7 @@
         /> -->
 
         <q-toolbar-title>
-          TODO App
+          My Tasks
         </q-toolbar-title>
 
         <!-- <div>Quasar v{{ $q.version }}</div> -->
