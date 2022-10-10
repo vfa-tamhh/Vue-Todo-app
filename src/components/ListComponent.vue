@@ -11,7 +11,7 @@
             v-model:selected="selected"
           >
           <template v-slot:top>
-            <q-btn color="white" text-color="black" :disable="selected.length != 1" label="Edit" @click="prompt=true, currentTask = selected[0], isAddTask=false" icon-right="edit"/>
+            <q-btn color="white" text-color="black" :disable="selected.length != 1" label="Edit" @click="prompt=true, currentTask = JSON.parse(JSON.stringify(selected[0])), isAddTask=false" icon-right="edit"/>
             <q-btn class="q-ml-sm" color="green" :disable="selected.length===0" label="Change Status" @click="updateStatus=true, currentStatus=null" icon-right="edit"/>
             <q-btn class="q-ml-sm" color="red" :disable="selected.length===0" label="Delete" @click="confirm=true" icon-right="delete"/>
           </template>
