@@ -210,19 +210,20 @@ export default defineComponent({
     this.loadData()
   },
   setup (props) {
-    var currentTask : Tasks = {}
+    // var currentTask : Tasks = {}
+    var currentTask = ref<Tasks>({})
     const prompt = ref(false)
     const selected  = ref([])
     const $q = useQuasar()
     const rows = ref([])
 
-    const abc = ref({})
+    var abc = ref<Tasks>({})
 
     function initCreateTask() {
       abc.value = {};
       const timeStamp = Date.now()
-      currentTask.start = date.formatDate(timeStamp, 'YYYY-MM-DD HH:mm')
-      currentTask.end = date.formatDate(timeStamp, 'YYYY-MM-DD HH:mm')
+      currentTask.value.start = date.formatDate(timeStamp, 'YYYY-MM-DD HH:mm')
+      currentTask.value.end = date.formatDate(timeStamp, 'YYYY-MM-DD HH:mm')
       console.log(currentTask)
     }
 
@@ -327,7 +328,7 @@ export default defineComponent({
 
     return {
             isAddTask: ref(true),
-            currentStatus: ref({}),
+            currentStatus: ref(null),
             updateStatus: ref(false),
             confirm: ref(false),
             prompt: prompt,
@@ -340,7 +341,7 @@ export default defineComponent({
               'New', 'Doing', 'Done'
             ],
             selected,
-            columns,
+            columns: columns,
             rows,
 
             getSelectedString () {
@@ -349,7 +350,7 @@ export default defineComponent({
             date: ref('2019-02-01 12:44'),
             loadData,
             deleteData,
-            currentTask: ref(null),
+            currentTask: currentTask,
             showEdit,
             changeStatus,
             updateTask,
